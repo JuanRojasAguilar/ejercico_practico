@@ -9,7 +9,8 @@ def agregar_estudiante():
       "identificacion": identificacion,
       "nombre": nombre,
       "edad": edad,
-      "IMC": 0
+      "IMC": 0,
+      "clasificacion": ""
     }
     listado_estudiante.append(estudiante)
     option = input(f"Listo, {nombre} ha sido agregado a la base de datos.\n\nQuieres añadir otro estudiante? S(si) N(no)")

@@ -19,6 +19,8 @@ def calcular_imc():
       categoria = "OBESIDAD III"
     else:
       return print(f"A la edad de {edad} tu imc parece ser de {imc}, por favor confirma los datos o visita a un experto de la salud")
+    
+    estudiante["clasificacion"] = categoria
     print(f"Actualmente tu imc es de {imc:.2f}, eso te pondría en la categoría {categoria}")
 
     opcion = input("Quieres continuar? S(si) Enter(no)").upper()
