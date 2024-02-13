@@ -1,7 +1,9 @@
+from . import menus
+from . import estudiantes
+
 def calcular_imc():
-  pesar = True
-  while pesar == True:
-    edad = int(input("Por favor, ingresa tu edad"))
+  while True:
+    estudiante = estudiantes.buscar_estudiante()
     peso = float(input("Por favor, agrega tu peso actual en kilogramos: "))
     altura = float(input("Por favor, ingresa tu altura actual en metros: "))
     input("Se está calculando el peso... Dale ENTER para continuar")
@@ -18,14 +20,14 @@ def calcular_imc():
     elif imc >= 40 and imc < 100:
       categoria = "OBESIDAD III"
     else:
-      return print(f"A la edad de {edad} tu imc parece ser de {imc}, por favor confirma los datos o visita a un experto de la salud")
+      return print(f"Tu imc parece ser de {imc:.2f}, por favor confirma los datos o visita a un experto de la salud")
     
     estudiante["clasificacion"] = categoria
     print(f"Actualmente tu imc es de {imc:.2f}, eso te pondría en la categoría {categoria}")
 
     opcion = input("Quieres continuar? S(si) Enter(no)").upper()
     if opcion == "S":
-      pass
+      calcular_imc() 
     else:
-      pesar = False
+      menus.menu_principal() 
   

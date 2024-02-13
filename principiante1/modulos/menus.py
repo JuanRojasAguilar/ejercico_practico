@@ -6,7 +6,7 @@ from . import calcular_imc as imc
 from . import estudiantes
 
 def borrar_pantalla():
-  if sys.plataform.startswith("linux"):
+  if sys.platform.startswith("linux"):
     os.system("clear")
   else:
     os.system("cls")
