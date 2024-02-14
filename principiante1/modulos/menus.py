@@ -4,9 +4,10 @@ from tabulate import tabulate
 
 from . import calcular_imc as imc
 from . import estudiantes
+from . import reportes
 
 def borrar_pantalla():
-  if sys.platform.startswith("linux"):
+  if sys.platform == "linux" or sys.platform == "darwin":
     os.system("clear")
   else:
     os.system("cls")
@@ -31,6 +32,22 @@ def menu_principal():
 
 def menu_reportes():
   tabla_menu = [["A", "Cuantos estudiantes se encuentran en el peso ideal"], ["B.", "Cuantos estudiantes se encuentran en OBESIDAD GRADO I"], ["C.", "Cuantos estudiantes se encuentran en OBESIDAD GRADO II"],["D.","Cuantos estudiantes se encuentran en OBESIDAD GRADO III"], ["E.","Cuantos estudiantes se encuentran en SOBREPESO"], ["F.","Salir"]]
-  print(tabulate(tabla_menu,tablefmt="grid"))
-
+  print(tabla_menu)
   option = input(">> ").upper()
+
+  if option == "A":
+    reportes.total_peso("NORMAL")
+    input("Presiona ENTER para volver")
+  elif option == "B":
+    reportes.total_peso("OBESIDAD I")
+    input("Presiona ENTER para volver")
+  elif option == "C":
+    reportes.total_peso("OBESIDAD II")
+  elif option == "D":
+    reportes.total_peso("OBESIDAD III")
+  elif option == "E":
+    reportes.total_peso("SOBREPESO")
+  elif option == "F":
+    menu_principal()
+  else:
+    menu_reportes()
