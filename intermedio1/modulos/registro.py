@@ -120,7 +120,7 @@ def buscar_sismo_ciudad():
 
 def informe_riesgo():
   are_sismos_los_mismos = mismos_sismos()
-  if are_sismos_los_mismos == False:
+  if isinstance(are_sismos_los_mismos, False):
     input("Tus ciudades no tienen la misma cantidad de sismos, revisa los datos\nPresiona ENTER para volver al menú principal")
     app()
   else:
