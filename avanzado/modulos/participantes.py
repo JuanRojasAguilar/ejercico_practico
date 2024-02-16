@@ -79,16 +79,54 @@ def registar_fecha():
     registar_fecha()
 
 def fecha_notavos():
-  print(tabulate(listado_categoria["Novato"],tablefmt="grid"))
-  input()
+  if len(listado_categoria["Novato"] < 5):
+    input("Todavía faltan participantes para iniciar los partidos en esta categoría.\nPresiona ENTER para voler.")
+    mn.menu_principal()
+  else:
+    print(tabulate(listado_categoria["Novato"],tablefmt="grid"))
+    participante1 = input("Ingresa el nombre del primer participante: ").title()
+    participante2 = input("Ingresa el nombre del segundo participante: ").title()
+    
+    atleta1 = buscar_participante(participante1)
+    atleta2 = buscar_participante(participante2)
+    if atleta1["categoria"] != "Novato" or atleta2["categoria"] != "Novato":
+      input("Alguno de tus deportistas no hace parte de la categoría.\nPresiona ENTER para voler.")
+      mn.menu_principal()
+
 
 def fecha_intermedio():
-  print(tabulate(listado_categoria["Intermedio"],tablefmt="grid"))
-  input()
+  if len(listado_categoria["Intermedio"] < 5):
+    input("Todavía faltan participantes para iniciar los partidos en esta categoría.\nPresiona ENTER para voler.")
+    mn.menu_principal()
+  else:
+    print(tabulate(listado_categoria["Intermedio"],tablefmt="grid"))
+    input()
 
 def fecha_avanzado():
-  print(tabulate(listado_categoria["Avanzado"],tablefmt="grid"))
-  input()
+  if len(listado_categoria["Avanzado"] < 5):
+    input("Todavía faltan participantes para iniciar los partidos en esta categoría.\nPresiona ENTER para voler.")
+    mn.menu_principal()
+  else:
+    print(tabulate(listado_categoria["Avanzado"],tablefmt="grid"))
+    input()
 
-def puntuar(participante1, participante2):
-  
+def puntuar(participante1, participante2): 
+  puntos_participante1 = int(input(f"Cuántos puntos hizo {participante1["nombre"]}"))
+  puntos_participante2 = int(input(f"Cuántos puntos hizo {participante2["nombre"]}"))
+
+  participante1["PJ"] += 1
+  participante2["PJ"] += 1
+
+  if puntos_participante1 > puntos_participante2:
+    participante1["PG"] += 1
+    participante1["TP"] += 2
+    participante1["PA"] += (puntos_participante1 - puntos_participante2)
+    participante2["PP"] += 1
+  elif puntos_participante2 > puntos_participante1:
+    participante2["PG"] += 1
+    participante2["TP"] += 2
+    participante2["PA"] += (puntos_participante2 - puntos_participante1)
+    participante1["PP"] += 1
+  else:
+    participante1["TP"] += 1
+    participante2["TP"] += 1
