@@ -3,6 +3,7 @@ from os import system
 
 from tabulate import tabulate
 from .participantes import agregar_participante, registar_fecha
+from .reportes import menu_reportes
 
 def borrar_pantalla():
   if sys.platform == "linux" or sys.platform == "darwin":
@@ -28,6 +29,7 @@ def menu_principal():
     registar_fecha()
     menu_principal()
   elif opcion == "3":
+    menu_reportes()
     menu_principal()
   elif opcion == "4":
     sys.exit("Hasta luego!")
