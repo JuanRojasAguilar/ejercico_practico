@@ -1,6 +1,5 @@
-from modulos.numero import ingresar_numeros, reporte_numeros
-
+import modulos.menus as menus
 if __name__ == "__main__":
   def main():
-    ingresar_numeros()
+    menus.menu_principal()
   main()
