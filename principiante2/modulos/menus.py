@@ -15,7 +15,7 @@ def borrar_pantalla():
 def menu_principal():
   borrar_pantalla()
   print("Bienvenido!")
-  print("\n1.Agregar estudiantes\n2.Calcular IMC\n3.Salir")
+  print("\n1.Agregar estudiantes\n2.Calcular IMC\n3.Reportes\n4.Salir")
 
   option = input(">> ")
   if option == "1":
@@ -27,12 +27,14 @@ def menu_principal():
   elif option == "3":
     borrar_pantalla()
     menu_reportes()
+  elif option == "4":
+    sys.exit("Hasta pronto!")
   else:
-    sys.exit()
+    menu_principal()
 
 def menu_reportes():
   tabla_menu = [["A", "Cuantos estudiantes se encuentran en el peso ideal"], ["B.", "Cuantos estudiantes se encuentran en OBESIDAD GRADO I"], ["C.", "Cuantos estudiantes se encuentran en OBESIDAD GRADO II"],["D.","Cuantos estudiantes se encuentran en OBESIDAD GRADO III"], ["E.","Cuantos estudiantes se encuentran en SOBREPESO"], ["F.","Salir"]]
-  print(tabla_menu)
+  print(tabulate(tabla_menu,tablefmt="grid"))
   option = input(">> ").upper()
 
   if option == "A":

@@ -3,14 +3,19 @@ from tabulate import tabulate
 lista_numeros = []
 
 def ingresar_numeros():
-  numero = int(input("Por favor, ingresa un número entero positivo: "))
-  if numero > 0:
-    lista_numeros.append(numero)
-    ingresar_numeros()
-  elif numero == 0:
+  try:
+    numero = int(input("Por favor, ingresa un número entero positivo: "))
+  except ValueError:
+    input("El valor ingresado no es válido")
     ingresar_numeros()
   else:
-    reporte_numeros()
+    if numero > 0:
+      lista_numeros.append(numero)
+      ingresar_numeros()
+    elif numero == 0:
+      ingresar_numeros()
+    else:
+     reporte_numeros()
 
 def reporte_numeros():
   pares = 0
